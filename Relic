@@ -1,0 +1,166 @@
+import java.util.ArrayList;
+
+public class Relic {
+	
+	
+	private String relicType;
+	private String relicName;
+	private String refinement;
+	private String[] drops;
+	private boolean vaulted;
+	
+	private ArrayList<String> dropList;
+	
+	
+	public Relic(String type, String name, String refinement, String[] drops, boolean vault)
+	{
+		this.relicType = type;
+		this.relicName = name;
+		this.refinement = refinement;
+		this.drops = drops;		
+		this.vaulted = vault;
+		
+		this.dropList = new ArrayList<>();
+		fixDrops();
+	}
+	
+	public Relic(String type, String name, String[] drops, boolean vault)
+	{
+		this.relicType = type;
+		this.relicName = name;
+		this.refinement = "Intact";
+		this.drops = drops;
+		this.vaulted = vault;
+		
+		this.dropList = new ArrayList<>();
+		fixDrops();
+	}
+	
+	
+	
+	// getter methods
+	
+	// Gets type of relic (usually Lith, Meso, Neo or Axi)
+	public String getType()
+	{
+		return this.relicType;
+	}
+	// Gets name of relic (in the convention of <Letter><Number> ie. "N9")
+	public String getName()
+	{
+		return this.relicName;
+	}
+	// Gets refinement of relic (if not specified otherwise refinement is "Intact" by default.
+	public String getRefinement()
+	{
+		return this.refinement;
+	}
+	// Gets drops of the relic, so far just list of strings, have to figure out how to make them into sentences later
+	// ********** WIP *************
+	public ArrayList<String> getDrops()
+	{
+		return this.dropList;
+	}
+	// Checks vaulted status of the relic.
+	public String getVaulted()
+	{
+		if (vaulted)
+		{
+			return "Vaulted";
+		}
+		else
+		{
+			return "Not vaulted";
+		}
+	}
+	// Gets the complete relic name of the relic.
+	public String getData()
+	{
+		return getType() + " " + getName() + " " + "[" + getRefinement() + "] " + getVaulted() + " " + getDrops(); 
+	}
+
+	//
+	
+	
+	// setter methods
+	public void setType(String type)
+	{
+		this.relicType = type;
+	}
+	public void setName(String name)
+	{
+		this.relicName = name;
+	}
+	public void setRefinement(String refinement)
+	{
+		this.refinement = refinement;
+	}
+	public void setDrops(String[] drops)
+	{
+		this.drops = drops;
+	}
+	public void setVaulted(boolean vault)
+	{
+		this.vaulted = vault;
+	}
+	//
+	
+	private void fixDrops()
+	{
+		String tmpWord = "";
+		for (int i = 0; i < drops.length; i++)
+		{
+			if (drops[i].equals("Blueprint") ||
+					drops[i].equals("Receiver")||
+					drops[i].equals("Limb")||
+					drops[i].equals("Blade")||
+					drops[i].equals("Stock")||
+					drops[i].equals("Barrel")||
+					drops[i].equals("Link")||
+					drops[i].equals("Grip")||
+					drops[i].equals("Handle")||
+					drops[i].equals("String")||
+					drops[i].equals("Gauntlet")||
+					drops[i].equals("Ornament")||
+					drops[i].equals("Chain")||
+					drops[i].equals("Carapace")||
+					drops[i].equals("Cerebrum")||
+					drops[i].equals("Head")||
+					drops[i].equals("Blades")||
+					drops[i].equals("Pouch")||
+					drops[i].equals("Boot")||
+					drops[i].equals("Head")||
+					drops[i].equals("Buckle")||
+					drops[i].equals("Disc")||
+					drops[i].equals("Hilt")||
+					drops[i].equals("Stars")||
+					drops[i].equals("Guard")||
+					drops[i].equals("Band")||
+					(drops[i].equals("Systems") && !(drops[i+1].equals("Blueprint")))
+					)
+			{
+				tmpWord = tmpWord + drops[i];
+				dropList.add(tmpWord);
+				tmpWord = "";
+			}
+			else
+			{
+				tmpWord = tmpWord + drops[i] + " ";
+			}
+		}
+	}
+	
+	public int avgPrice()
+	{
+		int avgPrice = 0;
+		for (int i = 0; i < dropList.size(); i++)
+		{
+			if (dropList.get(i).equals("Forma Blueprint"))
+			{
+				avgPrice += 1;
+			}
+		}
+		return avgPrice;
+	}
+
+}
