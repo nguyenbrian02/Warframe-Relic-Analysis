@@ -1,0 +1,408 @@
+import java.util.ArrayList;
+
+public class MainClass {
+	public static void main(String args[])
+	{
+//		  String word = "";
+//		  String type = "";
+//		  String name = "";
+		  
+//	  
+//		  for (int i = 0; i < unvaulted.length(); i++)
+//		  {
+//			   if (unvaulted.charAt(i) != ' ')
+//			   {
+//				   word = word + unvaulted.charAt(i);
+//			   }
+//			   else if (word.contains("Lith") || word.contains("Meso") || word.contains("Neo") || word.contains("Axi") )
+//			   {
+//				    asd.add(word);
+//				    word = "";
+//			   }
+//			   else
+//			   {
+//				    String word1 = word.replaceAll("\\s+", " ");
+//				    asd.add(word1);
+//				    word = "";
+//			   }
+//		  }
+//		  System.out.println(asd);
+//		  for (int i = 0; i < mainList.size(); i++)
+//		  {
+//			  System.out.println(mainList.get(i));
+//		  }
+		
+       // if they are in this list boolean vaulted = false;
+       // <Type> <Name> <Item1> <Item2> <Item3> <Item4> <Item5> <Item6>
+	   String unvaulted =  "Lith C4  Forma Blueprint Burston Prime Receiver Paris Prime Lower Limb Orthos Prime Blade Braton Prime Stock Chroma Prime Neuroptics Blueprint\r\n" +
+					       "Lith D1  Atlas Prime Blueprint Lex Prime Receiver Burston Prime Receiver Mesa Prime Blueprint Ninkondi Prime Chain Dethcube Prime Blueprint\r\n" + 
+					       "Lith L2  Pyrana Prime Barrel Equinox Prime Chassis Blueprint Redeemer Prime Blade Braton Prime Receiver Tekko Prime Blueprint Limbo Prime Neuroptics Blueprint\r\n" + 
+					       "Lith M4  Paris Prime Blueprint Akjagara Prime Blueprint Equinox Prime Chassis Blueprint Stradavar Prime Barrel Destreza Prime Blueprint Mesa Prime Neuroptics Blueprint\r\n" + 
+					       "Lith S8  Gram Prime Blade Braton Prime Barrel Forma Blueprint Orthos Prime Blueprint Rubico Prime Barrel Stradavar Prime Blueprint\r\n" + 
+					       "Lith V7  Fragor Prime Head Carrier Prime Blueprint Vectis Prime Barrel Ash Prime Blueprint Akstiletto Prime Link Vauban Prime Neuroptics Blueprint\r\n" + 
+					       "Lith V8  Ash Prime Chassis Blueprint Bronco Prime Blueprint Forma Blueprint Fragor Prime Handle Vectis Prime Stock Vauban Prime Systems Blueprint\r\n" + 
+					       "Lith W2  Rubico Prime Receiver Forma Blueprint Stradavar Prime Receiver Baza Prime Barrel Fang Prime Handle Wukong Prime Blueprint\r\n" + 
+					       "Meso B4  Paris Prime Upper Limb Chroma Prime Blueprint Bronco Prime Receiver Wukong Prime Chassis Blueprint Redeemer Prime Blueprint Baza Prime Blueprint\r\n" + 
+					       "Meso C4  Ivara Prime Neuroptics Blueprint Braton Prime Stock Mesa Prime Chassis Blueprint Forma Blueprint Atlas Prime Systems Blueprint Chroma Prime Systems Blueprint\r\n" + 
+					       "Meso D4  Forma Blueprint Orthos Prime Handle Akjagara Prime Blueprint Lex Prime Blueprint Chroma Prime Chassis Blueprint Dethcube Prime Cerebrum\r\n" + 
+					       "Meso E3  Destreza Prime Handle Bronco Prime Receiver Forma Blueprint Atlas Prime Chassis Blueprint Stradavar Prime Barrel Equinox Prime Systems Blueprint\r\n" + 
+					       "Meso L1  Tipedo Prime Blueprint Burston Prime Receiver Ninkondi Prime Blueprint Chroma Prime Chassis Blueprint Dethcube Prime Carapace Limbo Prime Chassis Blueprint\r\n" + 
+					       "Meso N9  Tekko Prime Gauntlet Forma Blueprint Paris Prime String Ivara Prime Blueprint Akjagara Prime Link Ninkondi Prime Handle\r\n" + 
+					       "Meso R2  Aksomati Prime Blueprint Fang Prime Blueprint Forma Blueprint Mesa Prime Blueprint Destreza Prime Blueprint Rubico Prime Blueprint\r\n" + 
+					       "Meso V6  Akstiletto Prime Barrel Forma Blueprint Braton Prime Barrel Vauban Prime Blueprint Carrier Prime Cerebrum Vectis Prime Receiver\r\n" + 
+					       "Neo A3  Zhuge Prime Grip Lex Prime Barrel Mesa Prime Chassis Blueprint Atlas Prime Systems Blueprint Equinox Prime Neuroptics Blueprint Akjagara Prime Barrel\r\n" + 
+					       "Neo A4  Carrier Prime Carapace Vauban Prime Chassis Blueprint Forma Blueprint Ash Prime Neuroptics Blueprint Vectis Prime Blueprint Akstiletto Prime Blueprint\r\n" + 
+					       "Neo G2  Forma Blueprint Dethcube Prime Systems Redeemer Prime Blade Pyrana Prime Receiver Zhuge Prime Blueprint Gram Prime Handle\r\n" + 
+					       "Neo I1  Zhuge Prime String Fang Prime Blade Wukong Prime Neuroptics Blueprint Akjagara Prime Receiver Limbo Prime Blueprint Ivara Prime Chassis Blueprint\r\n" + 
+					       "Neo M2  Akbronco Prime Blueprint Burston Prime Stock Forma Blueprint Limbo Prime Blueprint Bronco Prime Barrel Mesa Prime Systems Blueprint\r\n" + 
+					       "Neo R3  Baza Prime Receiver Limbo Prime Systems Blueprint Burston Prime Blueprint Paris Prime Grip Ninkondi Prime Chain Redeemer Prime Handle\r\n" + 
+					       "Neo T2  Akbronco Prime Blueprint Wukong Prime Neuroptics Blueprint Fang Prime Blueprint Dethcube Prime Carapace Forma Blueprint Tekko Prime Blade\r\n" + 
+					       "Neo Z5  Lex Prime Barrel Burston Prime Stock Akjagara Prime Blueprint Aksomati Prime Barrel Forma Blueprint Zhuge Prime Barrel\r\n" + 
+					       "Axi A2  Forma Blueprint Lex Prime Barrel Lex Prime Receiver Aklex Prime Blueprint Lex Prime Blueprint Aklex Prime Link\r\n" + 
+					       "Axi A6  Orthos Prime Handle Braton Prime Stock Chroma Prime Blueprint Zhuge Prime Blueprint Tipedo Prime Ornament Atlas Prime Neuroptics Blueprint\r\n" + 
+					       "Axi A7  Carrier Prime Systems Braton Prime Blueprint Akstiletto Prime Receiver Fragor Prime Blueprint Forma Blueprint Ash Prime Systems Blueprint\r\n" + 
+					       "Axi A8  Pyrana Prime Barrel Braton Prime Stock Equinox Prime Chassis Blueprint Gram Prime Blueprint Forma Blueprint Aksomati Prime Link\r\n" + 
+					       "Axi A9  Lex Prime Blueprint Rubico Prime Stock Gram Prime Blade Ivara Prime Systems Blueprint Akbronco Prime Link Atlas Prime Neuroptics Blueprint\r\n" + 
+					       "Axi B3  Paris Prime Lower Limb Stradavar Prime Stock Forma Blueprint Zhuge Prime Receiver Atlas Prime Chassis Blueprint Baza Prime Stock\r\n" + 
+					       "Axi D2  Aksomati Prime Receiver Braton Prime Blueprint Destreza Prime Handle Forma Blueprint Rubico Prime Stock Destreza Prime Blade\r\n" + 
+					       "Axi P3  Forma Blueprint Bronco Prime Blueprint Zhuge Prime Grip Wukong Prime Systems Blueprint Burston Prime Barrel Pyrana Prime Blueprint\r\n" + 
+					       "Axi T3  Limbo Prime Systems Blueprint Paris Prime Lower Limb Burston Prime Blueprint Equinox Prime Blueprint Forma Blueprint Tipedo Prime Handle";
+
+       // if they are in this list boolean vaulted = true;
+       // <Type> <Name> <Item1> <Item2> <Item3> <Item4> <Item5> <Item6> (same as above)
+		 String vaulted =  "Lith A1   Braton Prime Barrel Forma Blueprint Vasto Prime Receiver Saryn Prime Neuroptics Blueprint Vectis Prime Blueprint Akstiletto Prime Blueprint\r\n" + 
+					       "Lith A2   Forma Blueprint Lex Prime Barrel Valkyr Prime Blueprint Akbronco Prime Link Cernos Prime Blueprint Akstiletto Prime Blueprint\r\n" + 
+					       "Lith A3   Rubico Prime Receiver Orthos Prime Handle Lex Prime Blueprint Akbolto Prime Barrel Tiberon Prime Blueprint Akjagara Prime Barrel\r\n" + 
+					       "Lith B1   Ankyros Prime Blueprint Forma Blueprint Mag Prime Neuroptics Blueprint Boltor Prime Receiver Rhino Prime Neuroptics Blueprint Boar Prime Stock\r\n" + 
+					       "Lith B2   Forma Blueprint Paris Prime Lower Limb Tigris Prime Stock Braton Prime Receiver Orthos Prime Blade Ballistica Prime Blueprint\r\n" + 
+					       "Lith B3   Limbo Prime Systems Blueprint Forma Blueprint Burston Prime Blueprint Orthos Prime Blade Cernos Prime String Ballistica Prime Blueprint\r\n" + 
+					       "Lith B4   Nyx Prime Blueprint Forma Blueprint Ankyros Prime Blueprint Rhino Prime Neuroptics Blueprint Scindo Prime Blueprint Boltor Prime Blueprint\r\n" + 
+					       "Lith B5   Banshee Prime Neuroptics Blueprint Lex Prime Receiver Oberon Prime Chassis Blueprint Orthos Prime Blade Rubico Prime Stock Ballistica Prime Blueprint\r\n" + 
+					       "Lith B6   Lex Prime Barrel Fang Prime Blueprint Limbo Prime Systems Blueprint Orthos Prime Blueprint Redeemer Prime Blueprint Ballistica Prime Blueprint\r\n" + 
+					       "Lith C1   Fang Prime Blade Nova Prime Neuroptics Blueprint Nova Prime Systems Blueprint Forma Blueprint Kavasa Prime Collar Band Carrier Prime Cerebrum\r\n" + 
+					       "Lith C2   Bronco Prime Receiver Paris Prime Upper Limb Venka Prime Blades Akbolto Prime Barrel Nami Skyla Prime Handle Cernos Prime Lower Limb\r\n" + 
+					       "Lith C3   Lex Prime Blueprint Silva & Aegis Prime Hilt Sybaris Prime Blueprint Braton Prime Blueprint Helios Prime Blueprint Chroma Prime Neuroptics Blueprint\r\n" + 
+					       "Lith C5   Forma Blueprint Saryn Prime Neuroptics Blueprint Spira Prime Blueprint Venka Prime Blueprint Valkyr Prime Neuroptics Blueprint Cernos Prime Lower Limb\r\n" + 
+					       "Lith F1   Fang Prime Blade Forma Blueprint Paris Prime Blueprint Odonata Prime Blueprint Scindo Prime Blueprint Fragor Prime Blueprint\r\n" + 
+					       "Lith F2   Hikou Prime Stars Odonata Prime Systems Blueprint Paris Prime Upper Limb Burston Prime Barrel Fang Prime Handle Vauban Prime Blueprint\r\n" + 
+					       "Lith G1   Frost Prime Chassis Blueprint Latron Prime Blueprint Reaper Prime Handle Ember Prime Systems Blueprint Forma Blueprint Glaive Prime Blueprint\r\n" + 
+					       "Lith G2   Bo Prime Blueprint Latron Prime Stock Wyrm Prime Cerebrum Frost Prime Systems Blueprint Loki Prime Chassis Blueprint Glaive Prime Blueprint\r\n" + 
+					       "Lith H1   Bronco Prime Blueprint Paris Prime Blueprint Saryn Prime Systems Blueprint Akstiletto Prime Barrel Nami Skyla Prime Handle Helios Prime Cerebrum\r\n" + 
+					       "Lith H2   Lex Prime Barrel Forma Blueprint Zephyr Prime Neuroptics Blueprint Oberon Prime Blueprint Orthos Prime Blueprint Helios Prime Cerebrum\r\n" + 
+					       "Lith K1   Burston Prime Stock Fang Prime Blueprint Odonata Prime Harness Blueprint Tigris Prime Barrel Trinity Prime Blueprint Kavasa Prime Collar Buckle\r\n" + 
+					       "Lith K2   Zephyr Prime Neuroptics Blueprint Braton Prime Barrel Rubico Prime Receiver Forma Blueprint Braton Prime Receiver Kogake Prime Gauntlet\r\n" + 
+					       "Lith K3   Rubico Prime Receiver Forma Blueprint Paris Prime Upper Limb Tiberon Prime Blueprint Wukong Prime Chassis Blueprint Kronen Prime Blade\r\n" + 
+					       "Lith L1   Destreza Prime Handle Kogake Prime Boot Forma Blueprint Zhuge Prime Blueprint Equinox Prime Neuroptics Blueprint Limbo Prime Neuroptics Blueprint\r\n" +     "Lith L2  Pyrana Prime Barrel Equinox Prime Chassis Blueprint Redeemer Prime Blade Braton Prime Receiver Tekko Prime Blueprint Limbo Prime Neuroptics Blueprint\r\n" + 
+					       "Lith M1   Boar Prime Receiver Forma Blueprint Lex Prime Receiver Dakra Prime Blueprint Soma Prime Blueprint Mag Prime Blueprint\r\n" + 
+					       "Lith M2   Nova Prime Neuroptics Blueprint Soma Prime Barrel Dakra Prime Handle Boar Prime Barrel Forma Blueprint Mag Prime Blueprint\r\n" + 
+					       "Lith M3   Silva & Aegis Prime Hilt Forma Blueprint Paris Prime Blueprint Rubico Prime Stock Oberon Prime Blueprint Mesa Prime Neuroptics Blueprint\r\n" +     "Lith M4  Paris Prime Blueprint Akjagara Prime Blueprint Equinox Prime Chassis Blueprint Stradavar Prime Barrel Destreza Prime Blueprint Mesa Prime Neuroptics Blueprint\r\n" + 
+					       "Lith N1   Bronco Prime Blueprint Fang Prime Blade Nekros Prime Chassis Blueprint Akbronco Prime Link Forma Blueprint Nova Prime Chassis Blueprint\r\n" + 
+					       "Lith N2   Carrier Prime Systems Paris Prime Upper Limb Spira Prime Blueprint Helios Prime Blueprint Kavasa Prime Collar Band Nekros Prime Systems Blueprint\r\n" + 
+					       "Lith N3   Burston Prime Receiver Sybaris Prime Stock Valkyr Prime Blueprint Braton Prime Blueprint Forma Blueprint Nekros Prime Blueprint\r\n" + 
+					       "Lith O1   Rubico Prime Receiver Burston Prime Blueprint Ballistica Prime Lower Limb Akbolto Prime Barrel Forma Blueprint Oberon Prime Neuroptics Blueprint\r\n" + 
+					       "Lith O2   Volt Prime Blueprint Bo Prime Blueprint Wyrm Prime Cerebrum Loki Prime Chassis Blueprint Forma Blueprint Odonata Prime Wings Blueprint\r\n" + 
+					       "Lith P1   Sybaris Prime Stock Fang Prime Blade Helios Prime Carapace Forma Blueprint Braton Prime Receiver Pyrana Prime Blueprint\r\n" + 
+					       "Lith P2   Burston Prime Blueprint Tipedo Prime Blueprint Forma Blueprint Ballistica Prime Receiver Gram Prime Blueprint Pyrana Prime Blueprint\r\n" + 
+					       "Lith S1   Bronco Prime Blueprint Hikou Prime Blueprint Paris Prime String Forma Blueprint Paris Prime Grip Spira Prime Pouch\r\n" + 
+					       "Lith S2   Akbronco Prime Blueprint Carrier Prime Systems Nyx Prime Blueprint Forma Blueprint Kavasa Prime Collar Band Soma Prime Stock\r\n" + 
+					       "Lith S3   Akbronco Prime Blueprint Carrier Prime Systems Paris Prime String Ash Prime Blueprint Soma Prime Receiver Spira Prime Pouch\r\n" + 
+					       "Lith S4   Forma Blueprint Lex Prime Blueprint Paris Prime Blueprint Kavasa Prime Collar Blueprint Trinity Prime Chassis Blueprint Saryn Prime Blueprint\r\n" + 
+					       "Lith S5   Burston Prime Receiver Carrier Prime Carapace Fang Prime Blade Akbronco Prime Link Galatine Prime Handle Spira Prime Blade\r\n" + 
+					       "Lith S6   Dual Kamas Prime Blueprint Fang Prime Blade Forma Blueprint Kavasa Prime Collar Band Valkyr Prime Neuroptics Blueprint Spira Prime Pouch\r\n" + 
+					       "Lith S7   Galatine Prime Blade Lex Prime Blueprint Mirage Prime Chassis Blueprint Akbolto Prime Link Paris Prime Grip Sybaris Prime Barrel\r\n" +     "Lith S8  Gram Prime Blade Braton Prime Barrel Forma Blueprint Orthos Prime Blueprint Rubico Prime Barrel Stradavar Prime Blueprint\r\n" + 
+					       "Lith T1   Akbronco Prime Blueprint Burston Prime Blueprint Forma Blueprint Ballistica Prime Upper Limb Valkyr Prime Neuroptics Blueprint Tigris Prime Blueprint\r\n" + 
+					       "Lith T2   Valkyr Prime Blueprint Lex Prime Barrel Forma Blueprint Braton Prime Blueprint Silva & Aegis Prime Blueprint Tiberon Prime Stock\r\n" + 
+					       "Lith V1   Burston Prime Stock Paris Prime Lower Limb Paris Prime Upper Limb Forma Blueprint Volt Prime Systems Blueprint Fragor Prime Handle\r\n" + 
+					       "Lith V2   Fang Prime Blueprint Lex Prime Barrel Paris Prime Lower Limb Forma Blueprint Paris Prime Upper Limb Vauban Prime Systems Blueprint\r\n" + 
+					       "Lith V3   Braton Prime Blueprint Cernos Prime Upper Limb Paris Prime Lower Limb Helios Prime Systems Tigris Prime Barrel Valkyr Prime Systems Blueprint\r\n" + 
+					       "Lith V4   Nekros Prime Chassis Blueprint Spira Prime Blueprint Venka Prime Blades Helios Prime Blueprint Tigris Prime Barrel Vauban Prime Chassis Blueprint\r\n" + 
+					       "Lith V5   Akbronco Prime Blueprint Lex Prime Blueprint Banshee Prime Neuroptics Blueprint Ballistica Prime Upper Limb Akbolto Prime Barrel Valkyr Prime Systems Blueprint\r\n" + 
+					       "Lith V6   Cernos Prime Grip Nikana Prime Blueprint Venka Prime Blades Saryn Prime Blueprint Forma Blueprint Valkyr Prime Chassis Blueprint\r\n" + 
+					       "Lith W1   Gram Prime Blade Mirage Prime Neuroptics Blueprint Forma Blueprint Akbolto Prime Link Fang Prime Handle Wukong Prime Blueprint\r\n" +     "Lith W2  Rubico Prime Receiver Forma Blueprint Stradavar Prime Receiver Baza Prime Barrel Fang Prime Handle Wukong Prime Blueprint\r\n" + 
+					       "Lith Z1   Mirage Prime Neuroptics Blueprint Akbronco Prime Blueprint Fang Prime Handle Cernos Prime Blueprint Forma Blueprint Zephyr Prime Systems Blueprint\r\n" + 
+					       "Lith Z2   Akbronco Prime Blueprint Nami Skyla Prime Blueprint Forma Blueprint Silva & Aegis Prime Blueprint Helios Prime Systems Zephyr Prime Systems Blueprint\r\n" + 
+					       "Meso A1   Sybaris Prime Stock Ballistica Prime Lower Limb Orthos Prime Handle Kronen Prime Handle Forma Blueprint Akjagara Prime Barrel\r\n" + 
+					       "Meso A2   Zhuge Prime Grip Tipedo Prime Blueprint Forma Blueprint Equinox Prime Blueprint Zephyr Prime Chassis Blueprint Akbolto Prime Receiver\r\n" + 
+					       "Meso B1   Dakra Prime Handle Forma Blueprint Orthos Prime Handle Mag Prime Chassis Blueprint Orthos Prime Blueprint Boar Prime Stock\r\n" + 
+					       "Meso B2   Braton Prime Blueprint Oberon Prime Chassis Blueprint Silva & Aegis Prime Hilt Hydroid Prime Blueprint Kronen Prime Handle Banshee Prime Chassis Blueprint\r\n" + 
+					       "Meso B3   Nova Prime Systems Blueprint Soma Prime Blueprint Forma Blueprint Mag Prime Chassis Blueprint Dakra Prime Blueprint Boar Prime Stock\r\n" +     "Meso B4  Paris Prime Upper Limb Chroma Prime Blueprint Bronco Prime Receiver Wukong Prime Chassis Blueprint Redeemer Prime Blueprint Baza Prime Blueprint\r\n" + 
+					       "Meso C1   Forma Blueprint Nova Prime Neuroptics Blueprint Saryn Prime Systems Blueprint Ash Prime Blueprint Scindo Prime Handle Carrier Prime Cerebrum\r\n" + 
+					       "Meso C2   Bronco Prime Blueprint Cernos Prime Upper Limb Galatine Prime Blade Odonata Prime Blueprint Valkyr Prime Neuroptics Blueprint Carrier Prime Cerebrum\r\n" + 
+					       "Meso C3   Burston Prime Stock Lex Prime Blueprint Nami Skyla Prime Blueprint Helios Prime Blueprint Saryn Prime Blueprint Cernos Prime Lower Limb\r\n" + 
+					       "Meso D1   Forma Blueprint Lex Prime Blueprint Orthos Prime Handle Forma Blueprint Orthos Prime Blade Dual Kamas Prime Blade\r\n" + 
+					       "Meso D2   Paris Prime Lower Limb Lex Prime Receiver Forma Blueprint Valkyr Prime Neuroptics Blueprint Helios Prime Systems Destreza Prime Blade\r\n" + 
+					       "Meso D3   Akbolto Prime Blueprint Fang Prime Handle Braton Prime Stock Nami Skyla Prime Handle Kronen Prime Handle Destreza Prime Blade\r\n" +     "Meso D4  Forma Blueprint Orthos Prime Handle Akjagara Prime Blueprint Lex Prime Blueprint Chroma Prime Chassis Blueprint Dethcube Prime Cerebrum\r\n" + 
+					       "Meso E1   Bo Prime Ornament Frost Prime Chassis Blueprint Latron Prime Barrel Forma Blueprint Wyrm Prime Systems Ember Prime Blueprint\r\n" + 
+					       "Meso E2   Bronco Prime Blueprint Destreza Prime Handle Pyrana Prime Barrel Rubico Prime Stock Akbolto Prime Link Equinox Prime Systems Blueprint\r\n" +     "Meso E3  Destreza Prime Handle Bronco Prime Receiver Forma Blueprint Atlas Prime Chassis Blueprint Stradavar Prime Barrel Equinox Prime Systems Blueprint\r\n" + 
+					       "Meso F1   Bronco Prime Receiver Paris Prime Lower Limb Saryn Prime Systems Blueprint Dual Kamas Prime Handle Nekros Prime Neuroptics Blueprint Fragor Prime Blueprint\r\n" + 
+					       "Meso F2   Ember Prime Chassis Blueprint Latron Prime Stock Sicarus Prime Barrel Forma Blueprint Reaper Prime Blade Frost Prime Blueprint\r\n" + 
+					       "Meso F3   Ember Prime Neuroptics Blueprint Loki Prime Blueprint Reaper Prime Handle Forma Blueprint Glaive Prime Disc Frost Prime Blueprint\r\n" + 
+					       "Meso G1   Braton Prime Barrel Forma Blueprint Venka Prime Blades Ballistica Prime String Silva & Aegis Prime Blade Galatine Prime Blueprint\r\n" + 
+					       "Meso H1   Hydroid Prime Chassis Blueprint Mirage Prime Neuroptics Blueprint Paris Prime Blueprint Fragor Prime Blueprint Oberon Prime Blueprint Helios Prime Cerebrum\r\n" + 
+					       "Meso K1   Cernos Prime Upper Limb Nekros Prime Chassis Blueprint Orthos Prime Handle Akstiletto Prime Barrel Tigris Prime Receiver Kogake Prime Gauntlet\r\n" + 
+					       "Meso K2   Mirage Prime Chassis Blueprint Paris Prime String Orthos Prime Handle Wukong Prime Systems Blueprint Chroma Prime Chassis Blueprint Kronen Prime Blade\r\n" +     "Meso L1  Tipedo Prime Blueprint Burston Prime Receiver Ninkondi Prime Blueprint Chroma Prime Chassis Blueprint Dethcube Prime Carapace Limbo Prime Chassis Blueprint\r\n" + 
+					       "Meso M1   Ankyros Prime Gauntlet Boltor Prime Barrel Dakra Prime Handle Boar Prime Barrel Rhino Prime Chassis Blueprint Mag Prime Blueprint\r\n" + 
+					       "Meso M2   Fang Prime Blade Paris Prime String Kogake Prime Boot Akjagara Prime Link Silva & Aegis Prime Blade Mirage Prime Blueprint\r\n" + 
+					       "Meso M3   Ballistica Prime Lower Limb Gram Prime Blade Paris Prime String Equinox Prime Neuroptics Blueprint Kogake Prime Blueprint Mirage Prime Blueprint\r\n" + 
+					       "Meso N1   Braton Prime Stock Fang Prime Blueprint Fang Prime Handle Dual Kamas Prime Handle Forma Blueprint Nyx Prime Neuroptics Blueprint\r\n" + 
+					       "Meso N2   Bronco Prime Blueprint Fang Prime Handle Hikou Prime Blueprint Ash Prime Neuroptics Blueprint Forma Blueprint Vauban Prime Neuroptics Blueprint\r\n" + 
+					       "Meso N3   Braton Prime Barrel Bronco Prime Blueprint Burston Prime Stock Carrier Prime Cerebrum Euphona Prime Barrel Nekros Prime Blueprint\r\n" + 
+					       "Meso N4   Orthos Prime Handle Paris Prime Upper Limb Saryn Prime Systems Blueprint Forma Blueprint Oberon Prime Blueprint Nikana Prime Blade\r\n" + 
+					       "Meso N5   Braton Prime Stock Forma Blueprint Lex Prime Receiver Hydroid Prime Blueprint Tigris Prime Receiver Nekros Prime Systems Blueprint\r\n" + 
+					       "Meso N6   Forma Blueprint Boltor Prime Barrel Hikou Prime Pouch Scindo Prime Handle Rhino Prime Chassis Blueprint Nyx Prime Neuroptics Blueprint\r\n" + 
+					       "Meso N7   Limbo Prime Systems Blueprint Pyrana Prime Barrel Kronen Prime Blueprint Gram Prime Blueprint Forma Blueprint Ninkondi Prime Handle\r\n" + 
+					       "Meso N8   Valkyr Prime Blueprint Forma Blueprint Cernos Prime Upper Limb Valkyr Prime Neuroptics Blueprint Cernos Prime String Nikana Prime Hilt\r\n" +     "Meso N9  Tekko Prime Gauntlet Forma Blueprint Paris Prime String Ivara Prime Blueprint Akjagara Prime Link Ninkondi Prime Handle\r\n" + 
+					       "Meso O1   Akbronco Prime Blueprint Forma Blueprint Paris Prime Lower Limb Akstiletto Prime Link Cernos Prime String Oberon Prime Neuroptics Blueprint\r\n" + 
+					       "Meso O2   Paris Prime Lower Limb Cernos Prime Upper Limb Tiberon Prime Receiver Akbronco Prime Link Mirage Prime Systems Blueprint Oberon Prime Neuroptics Blueprint\r\n" + 
+					       "Meso O3   Forma Blueprint Loki Prime Neuroptics Blueprint Odonata Prime Systems Blueprint Volt Prime Chassis Blueprint Wyrm Prime Systems Odonata Prime Wings Blueprint\r\n" + 
+					       "Meso P1   Oberon Prime Chassis Blueprint Chroma Prime Blueprint Bronco Prime Receiver Silva & Aegis Prime Blueprint Ballistica Prime Receiver Pyrana Prime Blueprint\r\n" + 
+					       "Meso R1   Tiberon Prime Receiver Paris Prime Upper Limb Braton Prime Blueprint Akbronco Prime Link Ballistica Prime String Rubico Prime Blueprint\r\n" +     "Meso R2  Aksomati Prime Blueprint Fang Prime Blueprint Forma Blueprint Mesa Prime Blueprint Destreza Prime Blueprint Rubico Prime Blueprint\r\n" + 
+					       "Meso S1   Nova Prime Systems Blueprint Paris Prime Blueprint Tigris Prime Stock Odonata Prime Blueprint Paris Prime Upper Limb Soma Prime Stock\r\n" + 
+					       "Meso S2   Bronco Prime Blueprint Galatine Prime Blade Paris Prime String Forma Blueprint Paris Prime Grip Saryn Prime Chassis Blueprint\r\n" + 
+					       "Meso S3   Akbronco Prime Blueprint Nekros Prime Chassis Blueprint Valkyr Prime Blueprint Ash Prime Blueprint Forma Blueprint Spira Prime Pouch\r\n" + 
+					       "Meso S4   Banshee Prime Neuroptics Blueprint Fang Prime Blueprint Galatine Prime Blade Fang Prime Handle Trinity Prime Blueprint Saryn Prime Blueprint\r\n" + 
+					       "Meso S5   Braton Prime Barrel Burston Prime Stock Lex Prime Barrel Forma Blueprint Saryn Prime Neuroptics Blueprint Sybaris Prime Barrel\r\n" + 
+					       "Meso S6   Galatine Prime Blade Helios Prime Carapace Valkyr Prime Blueprint Cernos Prime String Tigris Prime Receiver Spira Prime Blade\r\n" + 
+					       "Meso S7   Forma Blueprint Cernos Prime Upper Limb Venka Prime Blades Paris Prime Grip Nami Skyla Prime Handle Sybaris Prime Barrel\r\n" + 
+					       "Meso S8   Gram Prime Blade Forma Blueprint Bronco Prime Receiver Ballistica Prime Upper Limb Burston Prime Barrel Sybaris Prime Barrel\r\n" + 
+					       "Meso S9   Spira Prime Blueprint Braton Prime Blueprint Lex Prime Barrel Saryn Prime Neuroptics Blueprint Forma Blueprint Spira Prime Pouch\r\n" + 
+					       "Meso T1   Fang Prime Blueprint Braton Prime Stock Burston Prime Receiver Paris Prime Upper Limb Forma Blueprint Tiberon Prime Barrel\r\n" + 
+					       "Meso T2   Lex Prime Barrel Paris Prime Lower Limb Forma Blueprint Tigris Prime Receiver Banshee Prime Blueprint Tiberon Prime Stock\r\n" + 
+					       "Meso T3   Lex Prime Barrel Forma Blueprint Paris Prime Lower Limb Chroma Prime Chassis Blueprint Limbo Prime Blueprint Tiberon Prime Stock\r\n" + 
+					       "Meso V1   Burston Prime Blueprint Carrier Prime Blueprint Spira Prime Blueprint Braton Prime Blueprint Forma Blueprint Vectis Prime Receiver\r\n" + 
+					       "Meso V2   Ash Prime Chassis Blueprint Paris Prime Blueprint Vasto Prime Receiver Forma Blueprint Volt Prime Chassis Blueprint Nikana Prime Blade\r\n" + 
+					       "Meso V3   Carrier Prime Blueprint Forma Blueprint Spira Prime Blueprint Kavasa Prime Collar Band Volt Prime Chassis Blueprint Valkyr Prime Systems Blueprint\r\n" + 
+					       "Meso V4   Carrier Prime Blueprint Forma Blueprint Lex Prime Barrel Ash Prime Neuroptics Blueprint Valkyr Prime Neuroptics Blueprint Vauban Prime Chassis Blueprint\r\n" + 
+					       "Meso V5   Bronco Prime Blueprint Cernos Prime Grip Spira Prime Blueprint Euphona Prime Barrel Silva & Aegis Prime Blueprint Venka Prime Gauntlet\r\n" +     "Meso V6  Akstiletto Prime Barrel Forma Blueprint Braton Prime Barrel Vauban Prime Blueprint Carrier Prime Cerebrum Vectis Prime Receiver\r\n" + 
+					       "Meso W1   Tekko Prime Gauntlet Tipedo Prime Blueprint Zhuge Prime String Fang Prime Handle Zephyr Prime Chassis Blueprint Wukong Prime Blueprint\r\n" + 
+					       "Meso Z1   Burston Prime Receiver Forma Blueprint Fang Prime Blueprint Helios Prime Blueprint Limbo Prime Blueprint Zephyr Prime Blueprint\r\n" + 
+					       "Meso Z2   Sybaris Prime Blueprint Redeemer Prime Blade Braton Prime Blueprint Hydroid Prime Blueprint Rubico Prime Barrel Zephyr Prime Systems Blueprint\r\n" + 
+					       "Meso Z3   Chroma Prime Blueprint Forma Blueprint Stradavar Prime Receiver Akjagara Prime Link Rubico Prime Barrel Zephyr Prime Systems Blueprint\r\n" + 
+					       "Neo A1   Braton Prime Barrel Carrier Prime Systems Forma Blueprint Cernos Prime String Vectis Prime Blueprint Akstiletto Prime Blueprint\r\n" + 
+					       "Neo A2   Pyrana Prime Barrel Kronen Prime Blueprint Limbo Prime Systems Blueprint Zephyr Prime Chassis Blueprint Forma Blueprint Akbolto Prime Receiver\r\n" +     "Neo A3  Zhuge Prime Grip Lex Prime Barrel Mesa Prime Chassis Blueprint Atlas Prime Systems Blueprint Equinox Prime Neuroptics Blueprint Akjagara Prime Barrel\r\n" +     "Neo A4  Carrier Prime Carapace Vauban Prime Chassis Blueprint Forma Blueprint Ash Prime Neuroptics Blueprint Vectis Prime Blueprint Akstiletto Prime Blueprint\r\n" + 
+					       "Neo B1   Bronco Prime Receiver Paris Prime String Trinity Prime Systems Blueprint Burston Prime Barrel Vectis Prime Stock Banshee Prime Chassis Blueprint\r\n" + 
+					       "Neo B2   Braton Prime Stock Fang Prime Blueprint Tigris Prime Stock Forma Blueprint Venka Prime Blueprint Banshee Prime Chassis Blueprint\r\n" + 
+					       "Neo B3   Boar Prime Blueprint Forma Blueprint Rhino Prime Systems Blueprint Dakra Prime Blade Mag Prime Chassis Blueprint Boltor Prime Blueprint\r\n" + 
+					       "Neo B4   Hydroid Prime Chassis Blueprint Burston Prime Stock Forma Blueprint Kronen Prime Handle Tigris Prime Barrel Banshee Prime Systems Blueprint\r\n" + 
+					       "Neo B5   Braton Prime Barrel Ballistica Prime Lower Limb Forma Blueprint Destreza Prime Blueprint Oberon Prime Blueprint Banshee Prime Systems Blueprint\r\n" + 
+					       "Neo C1   Limbo Prime Systems Blueprint Kronen Prime Blueprint Mesa Prime Chassis Blueprint Redeemer Prime Blueprint Pyrana Prime Receiver Chroma Prime Systems Blueprint\r\n" + 
+					       "Neo D1   Boar Prime Blueprint Mag Prime Systems Blueprint Vasto Prime Barrel Forma Blueprint Trinity Prime Neuroptics Blueprint Dakra Prime Blade\r\n" + 
+					       "Neo E1   Frost Prime Neuroptics Blueprint Loki Prime Neuroptics Blueprint Wyrm Prime Blueprint Forma Blueprint Reaper Prime Blade Ember Prime Blueprint\r\n" + 
+					       "Neo F1   Ember Prime Chassis Blueprint Sicarus Prime Barrel Sicarus Prime Blueprint Bo Prime Handle Forma Blueprint Frost Prime Blueprint\r\n" + 
+					       "Neo G1   Mirage Prime Neuroptics Blueprint Forma Blueprint Kogake Prime Boot Paris Prime Grip Hydroid Prime Neuroptics Blueprint Gram Prime Handle\r\n" +     "Neo G2  Forma Blueprint Dethcube Prime Systems Redeemer Prime Blade Pyrana Prime Receiver Zhuge Prime Blueprint Gram Prime Handle\r\n" + 
+					       "Neo H1   Burston Prime Receiver Fragor Prime Head Orthos Prime Handle Banshee Prime Blueprint Tigris Prime Barrel Hydroid Prime Systems Blueprint\r\n" + 
+					       "Neo H2   Euphona Prime Blueprint Burston Prime Stock Fang Prime Blueprint Rubico Prime Barrel Ballistica Prime Receiver Hydroid Prime Systems Blueprint\r\n" +     "Neo I1  Zhuge Prime String Fang Prime Blade Wukong Prime Neuroptics Blueprint Akjagara Prime Receiver Limbo Prime Blueprint Ivara Prime Chassis Blueprint\r\n" + 
+					       "Neo K1   Valkyr Prime Blueprint Silva & Aegis Prime Hilt Euphona Prime Blueprint Zephyr Prime Chassis Blueprint Helios Prime Blueprint Kogake Prime Gauntlet\r\n" + 
+					       "Neo K2   Chroma Prime Blueprint Braton Prime Barrel Banshee Prime Neuroptics Blueprint Mirage Prime Systems Blueprint Akbolto Prime Link Kogake Prime Gauntlet\r\n" + 
+					       "Neo L1   Mirage Prime Chassis Blueprint Euphona Prime Blueprint Kronen Prime Blueprint Silva & Aegis Prime Blade Ballistica Prime Receiver Limbo Prime Chassis Blueprint\r\n" + 
+					       "Neo M1   Akbolto Prime Blueprint Bronco Prime Blueprint Paris Prime String Euphona Prime Barrel Helios Prime Blueprint Mirage Prime Blueprint\r\n" +     "Neo M2  Akbronco Prime Blueprint Burston Prime Stock Forma Blueprint Limbo Prime Blueprint Bronco Prime Barrel Mesa Prime Systems Blueprint\r\n" + 
+					       "Neo N1   Forma Blueprint Hikou Prime Stars Vectis Prime Barrel Kavasa Prime Collar Blueprint Soma Prime Receiver Nyx Prime Chassis Blueprint\r\n" + 
+					       "Neo N10   Forma Blueprint Redeemer Prime Blade Zephyr Prime Neuroptics Blueprint Ballistica Prime Upper Limb Tipedo Prime Ornament Nami Skyla Prime Blade\r\n" + 
+					       "Neo N2   Fang Prime Blueprint Lex Prime Blueprint Vasto Prime Barrel Forma Blueprint Nova Prime Blueprint Vauban Prime Systems Blueprint\r\n" + 
+					       "Neo N3   Lex Prime Barrel Odonata Prime Systems Blueprint Paris Prime String Ash Prime Neuroptics Blueprint Fang Prime Handle Nekros Prime Systems Blueprint\r\n" + 
+					       "Neo N4   Ash Prime Chassis Blueprint Braton Prime Stock Paris Prime String Forma Blueprint Venka Prime Blueprint Nikana Prime Blade\r\n" + 
+					       "Neo N5   Forma Blueprint Helios Prime Carapace Saryn Prime Systems Blueprint Akstiletto Prime Link Ash Prime Systems Blueprint Nikana Prime Blueprint\r\n" + 
+					       "Neo N6   Bronco Prime Receiver Cernos Prime Upper Limb Galatine Prime Blade Sybaris Prime Receiver Trinity Prime Blueprint Nikana Prime Hilt\r\n" + 
+					       "Neo N7   Euphona Prime Blueprint Trinity Prime Neuroptics Blueprint Venka Prime Blades Banshee Prime Blueprint Valkyr Prime Neuroptics Blueprint Nekros Prime Systems Blueprint\r\n" + 
+					       "Neo N8   Paris Prime String Hydroid Prime Chassis Blueprint Sybaris Prime Blueprint Akbolto Prime Link Forma Blueprint Nami Skyla Prime Blade\r\n" + 
+					       "Neo N9   Mag Prime Neuroptics Blueprint Boar Prime Blueprint Dakra Prime Handle Soma Prime Receiver Forma Blueprint Nova Prime Chassis Blueprint\r\n" + 
+					       "Neo O1   Forma Blueprint Odonata Prime Harness Blueprint Volt Prime Blueprint Volt Prime Systems Blueprint Aklex Prime Blueprint Odonata Prime Wings Blueprint\r\n" + 
+					       "Neo R1   Hikou Prime Blueprint Ankyros Prime Gauntlet Forma Blueprint Boltor Prime Receiver Nyx Prime Chassis Blueprint Rhino Prime Blueprint\r\n" + 
+					       "Neo R2   Ninkondi Prime Blueprint Braton Prime Stock Forma Blueprint Paris Prime Grip Tiberon Prime Blueprint Rubico Prime Blueprint\r\n" +     "Neo R3  Baza Prime Receiver Limbo Prime Systems Blueprint Burston Prime Blueprint Paris Prime Grip Ninkondi Prime Chain Redeemer Prime Handle\r\n" + 
+					       "Neo S1   Carrier Prime Carapace Lex Prime Barrel Soma Prime Blueprint Forma Blueprint Trinity Prime Chassis Blueprint Saryn Prime Blueprint\r\n" + 
+					       "Neo S10   Saryn Prime Systems Blueprint Braton Prime Stock Lex Prime Blueprint Nikana Prime Blade Spira Prime Blade Saryn Prime Chassis Blueprint\r\n" + 
+					       "Neo S11   Fang Prime Blade Bronco Prime Receiver Hydroid Prime Chassis Blueprint Kronen Prime Handle Forma Blueprint Stradavar Prime Blueprint\r\n" + 
+					       "Neo S12   Fang Prime Blade Redeemer Prime Blade Paris Prime Upper Limb Wukong Prime Chassis Blueprint Mirage Prime Systems Blueprint Stradavar Prime Blueprint\r\n" + 
+					       "Neo S13   Saryn Prime Systems Blueprint Spira Prime Blueprint Nikana Prime Blueprint Cernos Prime Blueprint Forma Blueprint Saryn Prime Chassis Blueprint\r\n" + 
+					       "Neo S2   Burston Prime Stock Nova Prime Systems Blueprint Paris Prime Lower Limb Nyx Prime Systems Blueprint Paris Prime Upper Limb Saryn Prime Chassis Blueprint\r\n" + 
+					       "Neo S3   Burston Prime Receiver Carrier Prime Blueprint Soma Prime Barrel Forma Blueprint Vasto Prime Blueprint Spira Prime Blade\r\n" + 
+					       "Neo S5   Ember Prime Neuroptics Blueprint Latron Prime Receiver Reaper Prime Blueprint Frost Prime Systems Blueprint Glaive Prime Disc Sicarus Prime Receiver\r\n" + 
+					       "Neo S6   Burston Prime Blueprint Forma Blueprint Trinity Prime Neuroptics Blueprint Kavasa Prime Collar Buckle Tigris Prime Receiver Silva & Aegis Prime Guard\r\n" + 
+					       "Neo S7   Banshee Prime Neuroptics Blueprint Fang Prime Blade Helios Prime Carapace Ballistica Prime Receiver Sybaris Prime Receiver Silva & Aegis Prime Guard\r\n" + 
+					       "Neo S8   Bronco Prime Receiver Forma Blueprint Hydroid Prime Chassis Blueprint Fragor Prime Blueprint Nikana Prime Blueprint Spira Prime Pouch\r\n" + 
+					       "Neo S9   Akjagara Prime Blueprint Bronco Prime Blueprint Mirage Prime Neuroptics Blueprint Destreza Prime Blueprint Forma Blueprint Silva & Aegis Prime Guard\r\n" + 
+					       "Neo T1   Burston Prime Blueprint Dual Kamas Prime Blueprint Forma Blueprint Banshee Prime Blueprint Fragor Prime Handle Tigris Prime Blueprint\r\n" +     "Neo T2  Akbronco Prime Blueprint Wukong Prime Neuroptics Blueprint Fang Prime Blueprint Dethcube Prime Carapace Forma Blueprint Tekko Prime Blade\r\n" + 
+					       "Neo V1   Dual Kamas Prime Blueprint Forma Blueprint Nyx Prime Blueprint Bronco Prime Barrel Volt Prime Blueprint Nova Prime Chassis Blueprint\r\n" + 
+					       "Neo V2   Braton Prime Stock Fang Prime Handle Galatine Prime Blade Forma Blueprint Galatine Prime Handle Vauban Prime Blueprint\r\n" + 
+					       "Neo V3   Carrier Prime Systems Galatine Prime Blade Paris Prime String Forma Blueprint Tigris Prime Receiver Vauban Prime Neuroptics Blueprint\r\n" + 
+					       "Neo V4   Bronco Prime Receiver Cernos Prime Grip Tigris Prime Stock Ash Prime Neuroptics Blueprint Saryn Prime Neuroptics Blueprint Venka Prime Gauntlet\r\n" + 
+					       "Neo V5   Helios Prime Carapace Paris Prime String Silva & Aegis Prime Hilt Burston Prime Barrel Forma Blueprint Vauban Prime Neuroptics Blueprint\r\n" + 
+					       "Neo V6   Burston Prime Stock Cernos Prime Grip Forma Blueprint Fragor Prime Handle Mirage Prime Systems Blueprint Vauban Prime Chassis Blueprint\r\n" + 
+					       "Neo V7   Pyrana Prime Barrel Akbolto Prime Blueprint Forma Blueprint Banshee Prime Blueprint Cernos Prime Blueprint Valkyr Prime Chassis Blueprint\r\n" + 
+					       "Neo V8   Loki Prime Blueprint Odonata Prime Harness Blueprint Wyrm Prime Blueprint Bo Prime Handle Forma Blueprint Volt Prime Neuroptics Blueprint\r\n" + 
+					       "Neo Z1   Paris Prime Blueprint Nekros Prime Chassis Blueprint Orthos Prime Handle Galatine Prime Handle Forma Blueprint Zephyr Prime Blueprint\r\n" + 
+					       "Neo Z2   Lex Prime Blueprint Akbolto Prime Blueprint Braton Prime Stock Mesa Prime Blueprint Pyrana Prime Receiver Zephyr Prime Blueprint\r\n" + 
+					       "Neo Z3   Bronco Prime Receiver Zephyr Prime Neuroptics Blueprint Forma Blueprint Mesa Prime Blueprint Akjagara Prime Receiver Zhuge Prime Barrel\r\n" + 
+					       "Neo Z4   Paris Prime String Burston Prime Stock Kronen Prime Blueprint Forma Blueprint Redeemer Prime Blueprint Zephyr Prime Blueprint\r\n" +     "Neo Z5  Lex Prime Barrel Burston Prime Stock Akjagara Prime Blueprint Aksomati Prime Barrel Forma Blueprint Zhuge Prime Barrel\r\n" + 
+					       "Axi A1   Braton Prime Stock Fragor Prime Head Trinity Prime Systems Blueprint Akstiletto Prime Barrel Dual Kamas Prime Handle Nikana Prime Blueprint\r\n" + 
+					       "Axi A3   Braton Prime Barrel Helios Prime Carapace Kogake Prime Boot Cernos Prime String Hydroid Prime Neuroptics Blueprint Akbolto Prime Receiver\r\n" + 
+					       "Axi A4   Braton Prime Stock Forma Blueprint Zephyr Prime Neuroptics Blueprint Fang Prime Handle Ballistica Prime String Akbolto Prime Receiver\r\n" + 
+					       "Axi A5   Vasto Prime Barrel Vasto Prime Receiver Forma Blueprint Vasto Prime Blueprint Akvasto Prime Link Akvasto Prime Blueprint\r\n" + 
+					       "Axi B1   Ash Prime Chassis Blueprint Euphona Prime Blueprint Fang Prime Blade Cernos Prime Blueprint Kavasa Prime Collar Buckle Banshee Prime Systems Blueprint\r\n" + 
+					       "Axi B2   Fang Prime Blade Fragor Prime Head Sybaris Prime Blueprint Forma Blueprint Orthos Prime Blueprint Banshee Prime Systems Blueprint\r\n" +     "Axi B3  Paris Prime Lower Limb Stradavar Prime Stock Forma Blueprint Zhuge Prime Receiver Atlas Prime Chassis Blueprint Baza Prime Stock\r\n" + 
+					       "Axi C1   Lex Prime Receiver Trinity Prime Neuroptics Blueprint Vectis Prime Barrel Forma Blueprint Orthos Prime Blueprint Cernos Prime Lower Limb\r\n" + 
+					       "Axi C2   Braton Prime Blueprint Forma Blueprint Trinity Prime Systems Blueprint Fragor Prime Handle Silva & Aegis Prime Blade Cernos Prime Lower Limb\r\n" + 
+					       "Axi C3   Helios Prime Carapace Forma Blueprint Hydroid Prime Chassis Blueprint Banshee Prime Blueprint Pyrana Prime Receiver Chroma Prime Systems Blueprint\r\n" + 
+					       "Axi C4   Braton Prime Blueprint Hydroid Prime Chassis Blueprint Pyrana Prime Barrel Sybaris Prime Receiver Kogake Prime Blueprint Chroma Prime Systems Blueprint\r\n" + 
+					       "Axi D1   Braton Prime Blueprint Chroma Prime Blueprint Tiberon Prime Receiver Zhuge Prime Receiver Forma Blueprint Destreza Prime Blade\r\n" +     "Axi D2  Aksomati Prime Receiver Braton Prime Blueprint Destreza Prime Handle Forma Blueprint Rubico Prime Stock Destreza Prime Blade\r\n" + 
+					       "Axi E1   Frost Prime Neuroptics Blueprint Latron Prime Barrel Sicarus Prime Blueprint Forma Blueprint Glaive Prime Blade Ember Prime Blueprint\r\n" + 
+					       "Axi E2   Braton Prime Stock Lex Prime Receiver Paris Prime Blueprint Bronco Prime Barrel Forma Blueprint Euphona Prime Receiver\r\n" + 
+					       "Axi G1   Nekros Prime Chassis Blueprint Paris Prime Blueprint Saryn Prime Systems Blueprint Forma Blueprint Kavasa Prime Collar Blueprint Galatine Prime Blueprint\r\n" + 
+					       "Axi G2   Wukong Prime Neuroptics Blueprint Akbolto Prime Blueprint Burston Prime Receiver Tipedo Prime Ornament Redeemer Prime Blueprint Gram Prime Handle\r\n" + 
+					       "Axi G3   Lex Prime Blueprint Forma Blueprint Ninkondi Prime Blueprint Burston Prime Barrel Kronen Prime Handle Gram Prime Handle\r\n" + 
+					       "Axi H1   Forma Blueprint Fragor Prime Head Vectis Prime Barrel Akstiletto Prime Receiver Trinity Prime Chassis Blueprint Helios Prime Cerebrum\r\n" + 
+					       "Axi H2   Fang Prime Handle Lex Prime Receiver Oberon Prime Chassis Blueprint Akstiletto Prime Barrel Trinity Prime Chassis Blueprint Helios Prime Cerebrum\r\n" + 
+					       "Axi H3   Kronen Prime Blueprint Cernos Prime Grip Helios Prime Carapace Burston Prime Barrel Forma Blueprint Hydroid Prime Systems Blueprint\r\n" + 
+					       "Axi H4   Mesa Prime Chassis Blueprint Mirage Prime Chassis Blueprint Paris Prime Upper Limb Akbolto Prime Link Forma Blueprint Hydroid Prime Systems Blueprint\r\n" + 
+					       "Axi K1   Hikou Prime Pouch Lex Prime Barrel Odonata Prime Harness Blueprint Akstiletto Prime Receiver Forma Blueprint Kavasa Prime Collar Buckle\r\n" + 
+					       "Axi K2   Orthos Prime Handle Sybaris Prime Blueprint Forma Blueprint Cernos Prime String Galatine Prime Handle Kronen Prime Blade\r\n" + 
+					       "Axi K3   Paris Prime Blueprint Tiberon Prime Receiver Cernos Prime Grip Pyrana Prime Receiver Banshee Prime Blueprint Kronen Prime Blade\r\n" + 
+					       "Axi K4   Paris Prime Blueprint Forma Blueprint Sybaris Prime Stock Kogake Prime Blueprint Destreza Prime Blueprint Kronen Prime Blade\r\n" + 
+					       "Axi K5   Ballistica Prime Lower Limb Braton Prime Blueprint Forma Blueprint Hydroid Prime Blueprint Equinox Prime Blueprint Kronen Prime Blade\r\n" + 
+					       "Axi L1   Latron Prime Blueprint Reaper Prime Blueprint Wyrm Prime Carapace Forma Blueprint Glaive Prime Blade Loki Prime Systems Blueprint\r\n" + 
+					       "Axi L2   Orthos Prime Handle Braton Prime Blueprint Nami Skyla Prime Blueprint Forma Blueprint Tiberon Prime Blueprint Limbo Prime Neuroptics Blueprint\r\n" + 
+					       "Axi L3   Nami Skyla Prime Blueprint Kronen Prime Blueprint Fang Prime Handle Akjagara Prime Receiver Zephyr Prime Chassis Blueprint Limbo Prime Chassis Blueprint\r\n" + 
+					       "Axi L4   Forma Blueprint Bo Prime Ornament Wyrm Prime Carapace Volt Prime Systems Blueprint Odonata Prime Blueprint Loki Prime Systems Blueprint\r\n" + 
+					       "Axi L5   Fang Prime Blueprint Burston Prime Blueprint Rubico Prime Stock Akbronco Prime Link Kronen Prime Handle Limbo Prime Chassis Blueprint\r\n" + 
+					       "Axi M1   Zhuge Prime String Lex Prime Barrel Mesa Prime Chassis Blueprint Orthos Prime Blueprint Rubico Prime Barrel Mirage Prime Blueprint\r\n" + 
+					       "Axi N1   Braton Prime Blueprint Fang Prime Blade Forma Blueprint Akstiletto Prime Link Odonata Prime Wings Blueprint Ash Prime Systems Blueprint\r\n" + 
+					       "Axi N2   Bronco Prime Blueprint Carrier Prime Carapace Lex Prime Receiver Ash Prime Neuroptics Blueprint Forma Blueprint Nikana Prime Hilt\r\n" + 
+					       "Axi N3   Dual Kamas Prime Blueprint Forma Blueprint Paris Prime Upper Limb Bronco Prime Barrel Volt Prime Blueprint Nekros Prime Blueprint\r\n" + 
+					       "Axi N4   Cernos Prime Upper Limb Galatine Prime Blade Nekros Prime Chassis Blueprint Fragor Prime Handle Hydroid Prime Neuroptics Blueprint Nikana Prime Hilt\r\n" + 
+					       "Axi N5   Euphona Prime Blueprint Lex Prime Barrel Oberon Prime Chassis Blueprint Helios Prime Systems Nekros Prime Neuroptics Blueprint Nami Skyla Prime Blade\r\n" + 
+					       "Axi N6   Nikana Prime Blueprint Braton Prime Barrel Lex Prime Receiver Saryn Prime Blueprint Braton Prime Receiver Nikana Prime Hilt\r\n" + 
+					       "Axi O1   Euphona Prime Blueprint Forma Blueprint Paris Prime Blueprint Akstiletto Prime Receiver Galatine Prime Handle Oberon Prime Systems Blueprint\r\n" + 
+					       "Axi O2   Galatine Prime Blade Paris Prime String Fang Prime Blade Tiberon Prime Blueprint Helios Prime Systems Oberon Prime Systems Blueprint\r\n" + 
+					       "Axi O3   Destreza Prime Handle Burston Prime Stock Forma Blueprint Venka Prime Blueprint Zephyr Prime Chassis Blueprint Oberon Prime Systems Blueprint\r\n" + 
+					       "Axi O4   Destreza Prime Handle Zephyr Prime Neuroptics Blueprint Lex Prime Blueprint Gram Prime Blueprint Tiberon Prime Blueprint Oberon Prime Systems Blueprint\r\n" + 
+					       "Axi P1   Forma Blueprint Equinox Prime Chassis Blueprint Akjagara Prime Blueprint Ninkondi Prime Chain Kogake Prime Blueprint Pyrana Prime Blueprint\r\n" + 
+					       "Axi P2   Dethcube Prime Systems Bronco Prime Blueprint Tiberon Prime Receiver Destreza Prime Blueprint Rubico Prime Stock Pyrana Prime Blueprint\r\n" +     "Axi P3  Forma Blueprint Bronco Prime Blueprint Zhuge Prime Grip Wukong Prime Systems Blueprint Burston Prime Barrel Pyrana Prime Blueprint\r\n" + 
+					       "Axi R1   Boar Prime Receiver Boltor Prime Stock Mag Prime Systems Blueprint Ankyros Prime Blade Dakra Prime Blueprint Rhino Prime Blueprint\r\n" + 
+					       "Axi R2   Lex Prime Receiver Forma Blueprint Destreza Prime Handle Mirage Prime Systems Blueprint Chroma Prime Chassis Blueprint Redeemer Prime Handle\r\n" + 
+					       "Axi R3   Stradavar Prime Stock Fang Prime Blade Zephyr Prime Neuroptics Blueprint Wukong Prime Systems Blueprint Akjagara Prime Link Redeemer Prime Handle\r\n" + 
+					       "Axi S1   Bronco Prime Blueprint Bronco Prime Receiver Forma Blueprint Akbronco Prime Link Trinity Prime Blueprint Scindo Prime Blade\r\n" + 
+					       "Axi S2   Latron Prime Receiver Loki Prime Blueprint Wyrm Prime Blueprint Ember Prime Systems Blueprint Forma Blueprint Sicarus Prime Receiver\r\n" + 
+					       "Axi S3   Rhino Prime Systems Blueprint Boltor Prime Stock Hikou Prime Stars Nyx Prime Systems Blueprint Ankyros Prime Blade Scindo Prime Blade\r\n" + 
+					       "Axi S4   Mag Prime Systems Blueprint Boar Prime Receiver Forma Blueprint Nova Prime Blueprint Dakra Prime Blade Soma Prime Stock\r\n" + 
+					       "Axi S5   Saryn Prime Systems Blueprint Venka Prime Blades Cernos Prime Grip Nikana Prime Blade Forma Blueprint Spira Prime Pouch\r\n" + 
+					       "Axi T1   Odonata Prime Harness Blueprint Saryn Prime Systems Blueprint Vectis Prime Barrel Akstiletto Prime Receiver Burston Prime Barrel Tigris Prime Blueprint\r\n" + 
+					       "Axi T2   Kogake Prime Boot Stradavar Prime Stock Mirage Prime Neuroptics Blueprint Forma Blueprint Burston Prime Barrel Tipedo Prime Handle\r\n" +     "Axi T3  Limbo Prime Systems Blueprint Paris Prime Lower Limb Burston Prime Blueprint Equinox Prime Blueprint Forma Blueprint Tipedo Prime Handle\r\n" + 
+					       "Axi V1   Carrier Prime Systems Dual Kamas Prime Blueprint Odonata Prime Systems Blueprint Forma Blueprint Volt Prime Neuroptics Blueprint Vauban Prime Chassis Blueprint\r\n" + 
+					       "Axi V2   Hikou Prime Pouch Mag Prime Neuroptics Blueprint Trinity Prime Systems Blueprint Boar Prime Barrel Braton Prime Receiver Vectis Prime Stock\r\n" + 
+					       "Axi V3   Trinity Prime Neuroptics Blueprint Trinity Prime Systems Blueprint Vasto Prime Barrel Braton Prime Receiver Orthos Prime Blueprint Vectis Prime Stock\r\n" + 
+					       "Axi V4   Odonata Prime Harness Blueprint Paris Prime Blueprint Trinity Prime Systems Blueprint Cernos Prime Blueprint Forma Blueprint Vectis Prime Stock\r\n" + 
+					       "Axi V5   Dual Kamas Prime Blueprint Forma Blueprint Venka Prime Blades Braton Prime Receiver Tigris Prime Receiver Valkyr Prime Chassis Blueprint\r\n" + 
+					       "Axi V6   Ballistica Prime Lower Limb Braton Prime Blueprint Forma Blueprint Fang Prime Handle Galatine Prime Handle Valkyr Prime Chassis Blueprint\r\n" + 
+					       "Axi V7   Lex Prime Barrel Nami Skyla Prime Blueprint Valkyr Prime Blueprint Kogake Prime Blueprint Silva & Aegis Prime Blueprint Venka Prime Gauntlet\r\n" + 
+					       "Axi V8   Forma Blueprint Lex Prime Receiver Odonata Prime Systems Blueprint Volt Prime Chassis Blueprint Odonata Prime Blueprint Volt Prime Neuroptics Blueprint\r\n" + 
+					       "Axi V9   Valkyr Prime Blueprint Saryn Prime Neuroptics Blueprint Forma Blueprint Valkyr Prime Systems Blueprint Spira Prime Blade Venka Prime Gauntlet";
+	   
+		 // relicList is the arrayList that contains all the relics as relic classes.
+		 ArrayList<Relic> relicList = new ArrayList<>();
+		 
+		 
+		 // aggList is the aggregate list for all the strings in the given string.
+		 // tmpList is used to select all the words that lead up to a relic name into an arrayList to transfer to the mainList.
+		 // mainList is used to hold all the arrays of the relics, separating them to become relic objects later.
+		 ArrayList<String> aggList = new ArrayList<>();
+		 ArrayList<String> tmpList = new ArrayList<>();
+		 ArrayList<ArrayList<String>> mainList = new ArrayList<>();
+		 // unvaultedReplaced = replacing the strings of empty space to "," to partition words.
+		 // unvaultedSplit is an array of the elements of the strings that were partitioned from the unvaulted replaced.
+		 String unvaultedReplaced = unvaulted.replaceAll("\\s+", ",");
+		 String[] unvaultedSplit = unvaultedReplaced.split(",");
+
+		 // for every value of unvaultedSplit array, add it to the aggregate list.
+		 for (int i = 0; i < unvaultedSplit.length; i++)
+		 {
+			 aggList.add(unvaultedSplit[i]);
+		 }
+
+		 // Starting at the end of the aggregate List, check every element. If the element is not the name of the 4 relic types
+		 // add it to a temporaryList.
+		 // if the element is equal to the 4 relic types, then add the current temporaryList to the front of the mainList.
+		 // then clear the tmpList for use again.
+		 for (int i = aggList.size() - 1; i >= 0; i--)
+		 {
+			 if (aggList.get(i).equals("Lith") || 
+					 aggList.get(i).equals("Meso") || 
+					 aggList.get(i).equals("Neo") || 
+					 aggList.get(i).equals("Axi"))
+			 {
+				 tmpList.add(0, aggList.get(i));
+				 mainList.add(0, new ArrayList<String>(tmpList));
+				 tmpList.clear();
+			 }
+			 else
+			 {
+				 tmpList.add(0, aggList.get(i));
+			 }
+		 }
+
+
+		 // For every arrayList in mainList, we create a drop table called drops, which is element 2 to the last element of the array
+		 // the first two elements of currentElement will always be <Type><Name>
+		 for (int i = 0; i < mainList.size(); i++)
+		 {
+			 ArrayList<String> currentElement = mainList.get(i);
+			 int currSize = currentElement.size();
+			 String[] drops = new String[currSize-2];
+			 for (int j = 2; j < currSize; j++)
+			 {
+				 drops[j-2] = currentElement.get(j);
+			 }
+			 relicList.add(new Relic(currentElement.get(0),currentElement.get(1), drops,false));
+		 }
+
+		 
+
+		 // For unvaulteds
+		 aggList.clear();
+		 tmpList.clear();
+		 mainList.clear();
+
+		 String vaultedReplaced = vaulted.replaceAll("\\s+", ",");
+		 String[] vaultedSplit = vaultedReplaced.split(",");
+
+		 for (int i = 0; i < vaultedSplit.length; i++)
+		 {
+			 aggList.add(vaultedSplit[i]);
+		 }
+
+		 for (int i = aggList.size() - 1; i >= 0; i--)
+		 {
+			 if (aggList.get(i).equals("Lith") || 
+					 aggList.get(i).equals("Meso") || 
+					 aggList.get(i).equals("Neo") || 
+					 aggList.get(i).equals("Axi"))
+			 {
+				 tmpList.add(0, aggList.get(i));
+				 mainList.add(0, new ArrayList<String>(tmpList));
+				 tmpList.clear();
+			 }
+			 else
+			 {
+				 tmpList.add(0, aggList.get(i));
+			 }
+		 }
+		 
+		 for (int i = 0; i < mainList.size(); i++)
+		 {
+			 ArrayList<String> currentElement = mainList.get(i);
+			 int currSize = currentElement.size();
+			 String[] drops = new String[currSize-2];
+			 for (int j = 2; j < currSize; j++)
+			 {
+				 drops[j-2] = currentElement.get(j);
+			 }
+			 relicList.add(new Relic(currentElement.get(0),currentElement.get(1), drops, true));
+		 }
+
+		 for (int i = 0; i < relicList.size(); i++)
+		 {
+			 System.out.println(relicList.get(i).getData());
+			 //System.out.println(relicList.get(i).getDrops());
+		 }
+	}
+			 
+}
